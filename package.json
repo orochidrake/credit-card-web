@@ -2,21 +2,78 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
+  "license":"MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "eslint src --max-warnings=0",
+    "test": "jest --maxWorkers=50%",
+    "test:watch": "jest --watch --maxWorkers=25%",
+    "test:ci": "jest --runInBand --passWithNoTests",
+    "postinstall": "husky install",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "src/**/*": [
+      "yarn lint --fix",
+      "yarn test --findRelatedTests --bail"
+    ]
   },
   "dependencies": {
-    "@types/node": "20.4.5",
-    "@types/react": "18.2.18",
-    "@types/react-dom": "18.2.7",
-    "eslint": "8.46.0",
-    "eslint-config-next": "13.4.12",
-    "next": "13.4.12",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "typescript": "5.1.6"
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.17",
+    "@mui/material": "^5.8.4",
+    "@mui/styled-engine-sc": "^5.8.0",
+    "@mui/x-data-grid": "^5.12.1",
+    "@unform/core": "^2.1.6",
+    "@unform/web": "^2.1.6",
+    "next": "12.2.2",
+    "next-pwa": "^5.3.1",
+    "nookies": "^2.5.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-dropzone": "^12.0.2",
+    "react-icons": "^4.10.1",
+    "react-input-mask": "^3.0.0-alpha.2",
+    "styled-components": "^5.3.5",
+    "sweetalert2": "^11.7.20",
+    "validator": "^13.9.0",
+    "yup": "^1.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.9.1",
+    "@types/react": "^17.0.20",
+    "@types/react-input-mask": "^3.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "@types/styled-components": "^5.1.14",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-styled-components": "^1.13.2",
+    "eslint": "^7.32.0",
+    "eslint-config-next": "^11.1.2",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.2",
+    "jest": "^27.1.1",
+    "jest-styled-components": "^7.0.5",
+    "lint-staged": "^11.1.2",
+    "plop": "^2.7.4",
+    "prettier": "^2.4.0",
+    "typescript": "^4.4.2"
+  },
+  "resolutions": {
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.2"
   }
 }
